@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreenagar Print Services</title>
+<style>
+body { font-family:'Arial',sans-serif; margin:0; padding:0; background:#f0f0f5; color:#333; }
+.container { width:95%; max-width:800px; margin:40px auto; background:#fff; padding:30px; border-radius:20px; box-shadow:0 15px 40px rgba(0,0,0,0.2); text-align:center; }
+h1 { color:#D93025; text-shadow:2px 2px 6px rgba(0,0,0,0.2); }
+h2 { color:#444; font-weight:normal; }
+p { margin:10px 0; font-size:16px; }
+.button { display:inline-flex; align-items:center; justify-content:center; padding:14px 28px; margin:15px 10px; border-radius:15px; text-decoration:none; font-size:16px; font-weight:bold; box-shadow:0 8px 20px rgba(0,0,0,0.25); transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+.button img { width:24px; height:24px; margin-right:12px; }
+.button:hover { transform: translateY(-7px) scale(1.05); box-shadow:0 15px 30px rgba(0,0,0,0.35); }
+.gmail-btn { background-color:#D93025; color:white; }
+.whatsapp-btn { background-color:#25D366; color:white; }
+.gpay-btn { background-color:#4285F4; color:white; }
+.qr-code { margin:15px 0; display:inline-block; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.15); padding:10px; background:#fff; cursor:pointer; }
+.section { margin-top:25px; padding:20px; border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,0.15); }
+.whatsapp-section { background:#e6f7ee; }
+.gmail-section { background:#ffe6e6; }
+.gpay-section { background:#e6f0ff; }
+.section h3 { margin-bottom:15px; color:#333; }
+.thankyou { margin-top:30px; font-size:18px; font-weight:bold; color:#444; }
+
+/* Modal for enlarged QR */
+.modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
+.modal-content { background:#fff; padding:20px; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.4); max-width:90%; text-align:center; }
+.modal-content img { width:250px; max-width:90%; border-radius:15px; }
+
+@media(max-width:480px){ .button{ width:90%; justify-content:center; } .modal-content img{ width:200px; } }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Shreenagar Print Services</h1>
+    <h2>कार्ड्स, बैनर, विजिटिंग कार्ड, शादी कार्ड, फ्लेक्स बैनर आदि</h2>
+    <p>हमारा पता: Shreenagar, Ghatampur, Kanpur Nagar</p>
+
+    <!-- WhatsApp Section -->
+    <div class="section whatsapp-section">
+        <h3>WhatsApp संपर्क</h3>
+        <a href="https://wa.me/919129863340" class="button whatsapp-btn" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon">
+            WhatsApp से संपर्क करें
+        </a>
+        <div class="qr-code" onclick="openModal('https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://wa.me/919129863340')">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/919129863340" alt="WhatsApp QR">
+            <p>स्कैन करके सीधे WhatsApp संदेश भेजें</p>
+        </div>
+    </div>
+
+    <!-- Gmail Section -->
+    <div class="section gmail-section">
+        <h3>Gmail संपर्क</h3>
+        <a href="mailto:akashk4280@gmail.com" class="button gmail-btn" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Gmail Icon">
+            Gmail से संपर्क करें
+        </a>
+        <div class="qr-code" onclick="openModal('https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=mailto:akashk4280@gmail.com')">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=mailto:akashk4280@gmail.com" alt="Gmail QR">
+            <p>स्कैन करके सीधे ईमेल भेजें</p>
+        </div>
+    </div>
+
+    <!-- Google Pay Section -->
+    <div class="section gpay-section">
+        <h3>Google Pay पेमेंट</h3>
+        <a href="upi://pay?pa=akashk11000a@okicici&pn=Akash%20Kumar&cu=INR&am=100" class="button gpay-btn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Google_Pay_Logo.svg" alt="Google Pay Icon">
+            Google Pay से पेमेंट करें
+        </a>
+        <div class="qr-code" onclick="openModal('https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=akashk11000a@okicici&pn=Akash%20Kumar&cu=INR&am=100')">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=akashk11000a@okicici&pn=Akash%20Kumar&cu=INR&am=100" alt="Google Pay QR">
+            <p>स्कैन करके सीधे पेमेंट करें</p>
+        </div>
+    </div>
+
+    <div class="thankyou">धन्यवाद! 🙏</div>
+</div>
+
+<!-- Modal -->
+<div id="qrModal" class="modal" onclick="closeModal()">
+    <div class="modal-content">
+        <img id="modalImg" src="" alt="QR Code">
+    </div>
+</div>
+
+<script>
+function openModal(src){
+    document.getElementById('modalImg').src = src;
+    document.getElementById('qrModal').style.display = 'flex';
+}
+function closeModal(){
+    document.getElementById('qrModal').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
